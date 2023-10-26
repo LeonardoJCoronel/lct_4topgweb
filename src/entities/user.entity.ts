@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RolUsuarioEntity } from './rol_user.entity';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+//import { RolUsuarioEntity } from './rol_user.entity';
 
 @Entity({ name: 'usuario' })
 export class UsuarioEntity {
@@ -68,12 +68,12 @@ export class UsuarioEntity {
     })
     cedula: string
 
-    @ManyToMany(() => RolUsuarioEntity, (rol) => rol.tipo_usuario, { eager: true })
-    @JoinTable({ 
-      name: 'usuario_tipo',
-      joinColumn: { name: 'usuario_id' },
-      inverseJoinColumn: { name: 'rol_id' },
-    })
-    tipo_usuarioId: RolUsuarioEntity[];
+    // @ManyToMany(() => RolUsuarioEntity, (rol) => rol.tipo_usuario, { eager: true })
+    // @JoinTable({ 
+    //   name: 'usuario_tipo',
+    //   joinColumn: { name: 'usuario_id' },
+    //   inverseJoinColumn: { name: 'rol_id' },
+    // })
+    // tipo_usuarioId: RolUsuarioEntity[];
 
 }

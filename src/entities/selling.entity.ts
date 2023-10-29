@@ -1,11 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, } from 'typeorm';
-import { SellingEntity } from './selling.entity';
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, OneToMany, } from 'typeorm';
+import { UserEntity } from './user.entity';
+import { PaymentEntity } from './payment.entity';
 
-@Entity('payment', { schema: 'payment' })
-export class PaymentEntity {
+@Entity('selling', { schema: 'selling' })
+export class SellingEntity {
     @PrimaryGeneratedColumn('uuid')
-    id_pago: string;
+    id_venta: string;
 
     @CreateDateColumn({
         name: 'created_at',
@@ -35,14 +36,17 @@ export class PaymentEntity {
     })
     monto_pago: number;
 
-    @Column({ 
+    @Column({
         name: 'fecha_pago',
         type: 'date',
         comment: 'date payment'
     })
     fecha_pago: Date;
 
-    @ManyToOne(() => SellingEntity, selling => selling.pago)
-    venta: SellingEntity[];
+    @ManyToOne(() => UserEntity, user => user.venta)
+    usuario: UserEntity[];
+
+    @OneToMany(() => PaymentEntity, payment => payment.venta)
+    pago: PaymentEntity;
 
 }

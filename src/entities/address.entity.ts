@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import { UserEntity } from './user.entity';
 
 @Entity('address', {schema:'product'})
-export class DireccionEntity {
+export class AddressEntity {
 
     @PrimaryGeneratedColumn('uuid')
     id_direccion: string;
@@ -28,4 +29,6 @@ export class DireccionEntity {
     })
     numero_casa: string;
 
+    @ManyToOne(()=> UserEntity, usuario => usuario.direccion)
+    usuario: UserEntity[]
 }

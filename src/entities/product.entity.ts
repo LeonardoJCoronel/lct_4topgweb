@@ -1,5 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { CategoryEntity } from "./category.entity";
+import { IvaEntity } from "./iva.entity";
+import { GarantyEntity } from "./garanty.entity";
+import { UnitePriceEntity } from "./unite_price.entity";
 
 @Entity('product', { schema: 'ventas' })
 export class ProductEntity {
@@ -40,6 +44,18 @@ export class ProductEntity {
         comment: 'product_description'
     })
     description: string;
+
+    @ManyToOne(()=> CategoryEntity, category => category.producto)
+    categoria: CategoryEntity[];
+
+    @ManyToOne(()=> IvaEntity, iva => iva.producto)
+    iva: IvaEntity[];
+
+    @ManyToOne(()=> GarantyEntity, garanty => garanty.producto)
+    garantia: GarantyEntity[];
+
+    @ManyToOne(()=> UnitePriceEntity, unite_price => unite_price.producto)
+    precio_unitario: UnitePriceEntity[];
 
     @BeforeInsert()
     @BeforeUpdate()

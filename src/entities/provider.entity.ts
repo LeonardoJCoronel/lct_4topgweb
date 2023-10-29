@@ -2,7 +2,7 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('provider', {schema:'provider'})
-export class ProveedorEntity {
+export class ProviderEntity {
 
     @PrimaryColumn({
         name: 'identificacion_proveedor',

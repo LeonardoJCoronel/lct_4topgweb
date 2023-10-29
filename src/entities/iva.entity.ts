@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { ProductEntity } from './product.entity';
 
 @Entity('iva', {schema:'product'})
 export class IvaEntity {
@@ -33,4 +34,7 @@ export class IvaEntity {
     nullable: false
   })
   fecha_fin_iva: Date;
+
+  @OneToMany(()=> ProductEntity, product => product.iva )
+  producto: ProductEntity;
 }

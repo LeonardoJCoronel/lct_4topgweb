@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { ProductEntity } from './product.entity';
 
 @Entity('garantia', {schema:'product'})
-export class GarantiaEntity {
+export class GarantyEntity {
   @PrimaryGeneratedColumn('uuid')
   id_garantia: string;
 
@@ -26,4 +27,7 @@ export class GarantiaEntity {
     nullable: false
   })
   fecha_fin_vigencia: Date;
+
+  @OneToMany(()=> ProductEntity, product => product.garantia )
+  producto: ProductEntity;
 }

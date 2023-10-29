@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { ProductEntity } from './product.entity';
 
 @Entity('address', {schema:'payment'})
-export class PrecioUnitarioEntity {
+export class UnitePriceEntity {
 
     @PrimaryGeneratedColumn('uuid')
     id_unitario: string;
@@ -34,5 +35,8 @@ export class PrecioUnitarioEntity {
         nullable: false
     })
     fecha_fin_vigencia: Date ;
+
+    @OneToMany(()=> ProductEntity, product => product.precio_unitario )
+    producto: ProductEntity;
 
 }

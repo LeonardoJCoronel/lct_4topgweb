@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-//import { UsuarioEntity } from './user.entity';
-import { RolEnum } from './rol.enum';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { RolEnum } from '../dto/rol.enum';
+import { UserEntity } from './user.entity';
 
 @Entity({ name: 'tipo-usuario' })
-export class RolUsuarioEntity {
+export class RolUserEntity {
     
   @PrimaryGeneratedColumn()
   id_tipo_usuario: number;
@@ -13,7 +13,7 @@ export class RolUsuarioEntity {
   @Column({ type: 'character varying', default: 'cliente' })
   nombre_tipo_usuario: RolEnum;
 
-//   @ManyToMany(() => UsuarioEntity, usuario => usuario.tipo_usuarioId)
-//   tipo_usuario: UsuarioEntity[];
+  @ManyToMany(() => UserEntity, user => user.tipo_usuario)
+  user : UserEntity[];
 
 }

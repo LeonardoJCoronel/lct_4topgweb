@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { ProductEntity } from "./product.entity";
 
 @Entity('category', { schema: 'ventas' })
-export class CategoriaEntity {
+export class CategoryEntity {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -40,6 +41,9 @@ export class CategoriaEntity {
         comment: 'category_description'
     })
     description: string;
+
+    @OneToMany(()=> ProductEntity, product => product.categoria )
+    producto: ProductEntity;
 
     @BeforeInsert()
     @BeforeUpdate()

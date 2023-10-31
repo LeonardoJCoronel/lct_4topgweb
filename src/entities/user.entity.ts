@@ -4,7 +4,7 @@ import { RolUserEntity } from './rol_user.entity';
 import { AddressEntity } from './address.entity';
 import { SellingEntity } from './selling.entity';
 
-@Entity({ name: 'usuario' })
+@Entity('usuario', {schema: 'user'})
 export class UserEntity {
 
     @PrimaryGeneratedColumn()
@@ -82,6 +82,7 @@ export class UserEntity {
       name: 'usuario_tipo',
       joinColumn: { name: 'usuario_id' },
       inverseJoinColumn: { name: 'rol_id' },
+      schema: 'user'
     })
     tipo_usuario: RolUserEntity[];
 

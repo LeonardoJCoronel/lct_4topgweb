@@ -12,6 +12,7 @@ import {
   DB_USER,
 } from '../constants';
 import { VentasModule } from './ventas/ventas.module';
+import { ProductosModule } from './productos/productos.module';
 
 @Module({
   imports: [
@@ -38,6 +39,7 @@ import { VentasModule } from './ventas/ventas.module';
       inject: [ConfigService],
     }),
     VentasModule,
+    ProductosModule,
   ],
   controllers: [AppController],
   providers: [AppService],

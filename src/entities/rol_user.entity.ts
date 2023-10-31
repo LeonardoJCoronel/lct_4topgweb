@@ -4,7 +4,7 @@ import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { RolEnum } from '../dto/rol.enum';
 import { UserEntity } from './user.entity';
 
-@Entity({ name: 'tipo-usuario' })
+@Entity('tipo-usuario', { schema: 'user' })
 export class RolUserEntity {
     
   @PrimaryGeneratedColumn()

@@ -2,7 +2,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
 import { UserEntity } from './user.entity';
 
-@Entity('address', {schema:'product'})
+@Entity('address', {schema:'user'})
 export class AddressEntity {
 
     @PrimaryGeneratedColumn('uuid')

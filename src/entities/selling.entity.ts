@@ -30,18 +30,18 @@ export class SellingEntity {
     deletedAt: Date;
 
     @Column({
-        name: 'monto_pago',
-        type: 'integer',
-        comment: 'payment quantity'
+        name: 'estado',
+        type: 'boolean',
+        comment: 'selling state'
     })
-    monto_pago: number;
+    estado: boolean;
 
     @Column({
-        name: 'fecha_pago',
+        name: 'fecha_venta',
         type: 'date',
-        comment: 'date payment'
+        comment: 'selling date'
     })
-    fecha_pago: Date;
+    fecha_venta: Date;
 
     @ManyToOne(() => UserEntity, user => user.venta)
     usuario: UserEntity[];

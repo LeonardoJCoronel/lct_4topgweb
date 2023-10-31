@@ -4,6 +4,7 @@ import { CategoryEntity } from "./category.entity";
 import { IvaEntity } from "./iva.entity";
 import { GarantyEntity } from "./garanty.entity";
 import { UnitePriceEntity } from "./unite_price.entity";
+import { AcquisitionPriceEntity } from "./acquisition_price.entity";
 
 @Entity('product', { schema: 'ventas' })
 export class ProductEntity {
@@ -63,6 +64,9 @@ export class ProductEntity {
 
     @ManyToOne(()=> UnitePriceEntity, unite_price => unite_price.producto)
     precio_unitario: UnitePriceEntity[];
+
+    @ManyToOne(()=> AcquisitionPriceEntity, acquisition_price => acquisition_price.producto)
+    precio_adquisicion: AcquisitionPriceEntity[];
 
     @BeforeInsert()
     @BeforeUpdate()

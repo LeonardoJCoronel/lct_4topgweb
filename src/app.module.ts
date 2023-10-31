@@ -10,6 +10,7 @@ import {
   DB_PORT,
   DB_USER,
 } from '../constants';
+import { VentasModule } from './ventas/ventas.module';
 
 @Module({
   imports: [
@@ -24,15 +25,18 @@ import {
         host: configService.get<string>(DB_HOST),
         port: configService.get<number>(DB_PORT),
         username: configService.get<string>(DB_USER),
-        password: configService.get<string>(DB_PASSWORD),
+//        password: configService.get<string>(DB_PASSWORD),
         database: configService.get<string>(DB_DATABASE),
         entities: ['dist/**/*.entity{.ts,.js}'],
+        autoLoadEntities: true,
         synchronize: true,
+        dropSchema: true,
         retryDelay: 3000,
         retryAttempts: 10,
       }),
       inject: [ConfigService],
     }),
+    VentasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

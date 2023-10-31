@@ -45,6 +45,13 @@ export class ProductEntity {
     })
     description: string;
 
+    @Column('numeric', {
+        name: 'price',
+        nullable: false,
+        comment: 'product_price'
+    })
+    price: number;
+
     @ManyToOne(()=> CategoryEntity, category => category.producto)
     categoria: CategoryEntity[];
 

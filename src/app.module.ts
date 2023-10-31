@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -25,7 +26,7 @@ import { VentasModule } from './ventas/ventas.module';
         host: configService.get<string>(DB_HOST),
         port: configService.get<number>(DB_PORT),
         username: configService.get<string>(DB_USER),
-//        password: configService.get<string>(DB_PASSWORD),
+        password: configService.get<string>(DB_PASSWORD),
         database: configService.get<string>(DB_DATABASE),
         entities: ['dist/**/*.entity{.ts,.js}'],
         autoLoadEntities: true,

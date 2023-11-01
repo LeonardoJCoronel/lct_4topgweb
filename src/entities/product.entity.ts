@@ -33,6 +33,13 @@ export class ProductEntity {
     deletedAt: Date;
 
     @Column('varchar', {
+        name: 'code',
+        nullable: false,
+        comment: 'product_code'
+    })
+    code: string;
+
+    @Column('varchar', {
         name: 'title',
         nullable: false,
         comment: 'product_title'

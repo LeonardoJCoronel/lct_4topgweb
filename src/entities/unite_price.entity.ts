@@ -10,7 +10,7 @@ export class UnitePriceEntity {
 
     @Column({
         name: 'valor_venta',
-        type: 'integer',
+        type: 'decimal',
         nullable: false
     })
     valor_venta: number

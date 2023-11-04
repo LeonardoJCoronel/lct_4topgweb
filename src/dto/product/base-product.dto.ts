@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Allow, IsAlpha, IsAlphanumeric, IsNotEmpty, IsNumber, IsPositive, IsString } from "class-validator";
 
 export class BaseProductoDto {

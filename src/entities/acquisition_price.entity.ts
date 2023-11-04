@@ -10,7 +10,7 @@ export class AcquisitionPriceEntity {
 
     @Column({
         name: 'valor_adquisicion',
-        type: 'integer',
+        type: 'decimal',
         nullable: false
     })
     valor_adquisicion: number

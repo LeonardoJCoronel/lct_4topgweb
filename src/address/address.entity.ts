@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
-import { UserEntity } from './user.entity';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn} from 'typeorm';
+import { UserEntity } from '../user/user.entity';
 
 @Entity('address', {schema:'user'})
 export class AddressEntity {
 
-    @PrimaryGeneratedColumn('uuid')
-    id_direccion: string;
+    @PrimaryGeneratedColumn()
+    id_direccion: number;
 
     @Column({ 
         name: 'calle_primaria',
@@ -29,6 +29,7 @@ export class AddressEntity {
     })
     numero_casa: string;
 
-    @ManyToOne(()=> UserEntity, usuario => usuario.direccion)
-    usuario: UserEntity[]
+    @ManyToOne(()=> UserEntity)
+    @JoinColumn({name: 'usuario'})
+    usuario: UserEntity;
 }

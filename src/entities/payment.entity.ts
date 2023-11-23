@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, } from 'typeorm';
-import { SellingEntity } from './selling.entity';
+import { SellingEntity } from '../ventas/selling.entity';
 
 @Entity('payment', { schema: 'payment' })
 export class PaymentEntity {

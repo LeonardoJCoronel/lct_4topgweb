@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RolUserEntity } from './rol_user.entity';
-import { AddressEntity } from './address.entity';
-import { SellingEntity } from './selling.entity';
+import { RolUserEntity } from '../entities/rol_user.entity';
+import { AddressEntity } from '../address/address.entity';
+import { SellingEntity } from '../ventas/selling.entity';
+import { IsNumber } from 'class-validator';
 
 @Entity('usuario', {schema: 'user'})
 export class UserEntity {
 
     @PrimaryGeneratedColumn()
+    @IsNumber()
     id_usuario: number;
 
     @Column({
@@ -71,7 +73,7 @@ export class UserEntity {
     cedula: string
 
     @OneToMany(()=> AddressEntity, direccion => direccion.usuario )
-    direccion: AddressEntity;
+    direccion: AddressEntity[];
 
     @OneToMany(()=> SellingEntity, selling => selling.usuario )
     venta: SellingEntity;

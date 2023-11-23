@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, ManyToOne, OneToMany, } from 'typeorm';
-import { UserEntity } from './user.entity';
-import { PaymentEntity } from './payment.entity';
+import { UserEntity } from '../user/user.entity';
+import { PaymentEntity } from '../entities/payment.entity';
 
 @Entity('selling', { schema: 'selling' })
 export class SellingEntity {

@@ -7,12 +7,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import {
   DB_DATABASE,
   DB_HOST,
- // DB_PASSWORD,
+  DB_PASSWORD,
   DB_PORT,
   DB_USER,
 } from '../constants';
 import { VentasModule } from './ventas/ventas.module';
 import { ProductosModule } from './productos/productos.module';
+import { AddressModule } from './address/address.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -27,12 +29,12 @@ import { ProductosModule } from './productos/productos.module';
         host: configService.get<string>(DB_HOST),
         port: configService.get<number>(DB_PORT),
         username: configService.get<string>(DB_USER),
-        //password: configService.get<string>(DB_PASSWORD),
+        password: configService.get<string>(DB_PASSWORD),
         database: configService.get<string>(DB_DATABASE),
         entities: ['dist/**/*.entity{.ts,.js}'],
         autoLoadEntities: true,
         synchronize: true,
-        dropSchema: true,
+        dropSchema: false,
         retryDelay: 3000,
         retryAttempts: 10,
       }),
@@ -40,8 +42,10 @@ import { ProductosModule } from './productos/productos.module';
     }),
     VentasModule,
     ProductosModule,
+    AddressModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

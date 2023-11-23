@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SERVER_PORT } from '../constants';
 import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -10,5 +12,11 @@ async function bootstrap() {
   const port = +configService.get<number>(SERVER_PORT) || 3000;
   await app.listen(port);
   console.log(`listening on port ${await app.getUrl()}`);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true, //data basura
+      forbidNonWhitelisted: true,
+    }),
+  )
 }
 bootstrap();

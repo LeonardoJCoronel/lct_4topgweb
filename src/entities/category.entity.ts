@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { ProductEntity } from "./product.entity";
+import { ProductEntity } from "../productos/product.entity";
 
 @Entity('category', { schema: 'ventas' })
 export class CategoryEntity {

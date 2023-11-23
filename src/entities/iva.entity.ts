@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { ProductEntity } from './product.entity';
+import { ProductEntity } from '../productos/product.entity';
 
 @Entity('iva', {schema:'product'})
 export class IvaEntity {

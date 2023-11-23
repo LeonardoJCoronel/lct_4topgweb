@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { BeforeInsert, BeforeUpdate, Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { CategoryEntity } from "./category.entity";
-import { IvaEntity } from "./iva.entity";
-import { GarantyEntity } from "./garanty.entity";
-import { UnitePriceEntity } from "./unite_price.entity";
-import { AcquisitionPriceEntity } from "./acquisition_price.entity";
+import { CategoryEntity } from "../entities/category.entity";
+import { IvaEntity } from "../entities/iva.entity";
+import { GarantyEntity } from "../entities/garanty.entity";
+import { UnitePriceEntity } from "../entities/unite_price.entity";
+import { AcquisitionPriceEntity } from "../entities/acquisition_price.entity";
 
 @Entity('product', { schema: 'ventas' })
 export class ProductEntity {

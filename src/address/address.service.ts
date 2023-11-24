@@ -25,14 +25,14 @@ export class AddressService {
 
   async createAddress(address: CreateAddressDto) {
     const newAddress = this.addressRepository.create(address);
-    return this.addressRepository.save(newAddress);
+    return await this.addressRepository.save(newAddress);
   }
 
   async deleteAddress(id_direccion: number) {
-    return this.addressRepository.delete({ id_direccion });
+    return await this.addressRepository.delete({ id_direccion });
   }
 
   async updateAddress(id_direccion: number, direccion: UpdateAddressDto) {
-    this.addressRepository.update({ id_direccion }, direccion);
+    return await this.addressRepository.update({ id_direccion }, direccion);
   }
 }

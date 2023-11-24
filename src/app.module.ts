@@ -32,7 +32,7 @@ import { UserModule } from './user/user.module';
         password: configService.get<string>(DB_PASSWORD),
         database: configService.get<string>(DB_DATABASE),
         entities: ['dist/**/*.entity{.ts,.js}'],
-        autoLoadEntities: true,
+        autoLoadEntities: false,
         synchronize: true,
         dropSchema: false,
         retryDelay: 3000,

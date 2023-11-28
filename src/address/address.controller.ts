@@ -6,9 +6,11 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AddressService } from './address.service';
 import { CreateAddressDto, UpdateAddressDto } from 'src/address/address.dto';
+import { PaginationQueryDto } from 'src/dto/pagination.dto';
 
 @Controller('address')
 export class AddressController {
@@ -25,8 +27,8 @@ export class AddressController {
   }
 
   @Get()
-  getAddressList() {
-    return this.addressService.getAddressList();
+  getAddressList(@Query() pagination: PaginationQueryDto) {
+    return this.addressService.getAddressList(pagination);
   }
 
   @Delete(':id_direccion')

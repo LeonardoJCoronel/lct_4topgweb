@@ -14,8 +14,12 @@ async function bootstrap() {
   console.log(`listening on port ${await app.getUrl()}`);
   app.useGlobalPipes(
     new ValidationPipe({
+      transform: true,
       whitelist: true, //data basura
       forbidNonWhitelisted: true,
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     }),
   )
 }

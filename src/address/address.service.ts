@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AddressEntity } from './address.entity';
 import { Repository } from 'typeorm';
 import { CreateAddressDto, UpdateAddressDto } from 'src/address/address.dto';
+import { PaginationQueryDto } from 'src/dto/pagination.dto';
 
 @Injectable()
 export class AddressService {
@@ -19,8 +20,12 @@ export class AddressService {
     });
   }
 
-  async getAddressList() {
-    return await this.addressRepository.find({ relations: ['usuario'] });
+  async getAddressList({ limit, offset }: PaginationQueryDto) {
+    return await this.addressRepository.find({
+      relations: ['usuario'],
+      skip: offset,
+      take: limit,
+    });
   }
 
   async createAddress(address: CreateAddressDto) {

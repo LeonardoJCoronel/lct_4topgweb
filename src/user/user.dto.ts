@@ -9,6 +9,7 @@ export class CreateUserDto{
     correo: string
     estado: boolean
     cedula: string
+    tipo_usuario;
 }
 
 export class UpdateUserDto{
@@ -21,4 +22,5 @@ export class UpdateUserDto{
     correo: string
     estado: boolean
     cedula: string
+    tipo_usuario;
 }

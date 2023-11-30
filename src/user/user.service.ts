@@ -16,7 +16,9 @@ export class UserService {
   ) {}
 
   async getUsersList() {
-    const user = await this.userRepository.find();
+    const user = await this.userRepository.find({
+      relations: ['tipo_usuario'],
+    });
     if (!user.length)
       throw new NotFoundException(
         new Error('No existe un listado de usuarios'),

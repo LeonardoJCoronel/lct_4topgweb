@@ -15,6 +15,7 @@ import { VentasModule } from './ventas/ventas.module';
 import { ProductosModule } from './productos/productos.module';
 import { AddressModule } from './address/address.module';
 import { UserModule } from './user/user.module';
+import { TipoUsuarioModule } from './tipo_usuario/tipo_usuario.module';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { UserModule } from './user/user.module';
     ProductosModule,
     AddressModule,
     UserModule,
+    TipoUsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],

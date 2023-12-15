@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { RolUserEntity } from '../entities/rol_user.entity';
 import { AddressEntity } from '../address/address.entity';
 import { SellingEntity } from '../ventas/selling.entity';
 import { IsNumber } from 'class-validator';
+import { TipoUsuarioEntity } from 'src/tipo_usuario/tipo_usuario.entity';
 
 @Entity('usuario', {schema: 'user'})
 export class UserEntity {
@@ -79,13 +79,13 @@ export class UserEntity {
     venta: SellingEntity;
 
 
-    @ManyToMany(() => RolUserEntity, (rol) => rol.id_tipo_usuario, { eager: true })
+    @ManyToMany(() => TipoUsuarioEntity, (rol) => rol.usuario, { eager: true })
     @JoinTable({ 
       name: 'usuario_tipo',
       joinColumn: { name: 'usuario_id' },
       inverseJoinColumn: { name: 'rol_id' },
       schema: 'user'
     })
-    tipo_usuario: RolUserEntity[];
+    tipo_usuario: TipoUsuarioEntity[];
 
 }
